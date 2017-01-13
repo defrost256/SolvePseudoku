@@ -175,7 +175,7 @@ namespace SolvePseudoku
         public static int[] StringToIntArray(string str)
         {
             string csv = str.Substring(2, str.Length - 4);
-            string[] splitCsv = str.Split(',');
+            string[] splitCsv = csv.Split(',');
             List<int> ret = new List<int>();
             foreach(string s in splitCsv)
             {
