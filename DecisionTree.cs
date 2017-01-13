@@ -51,7 +51,7 @@ namespace SolvePseudoku
 
         public string getCurrentStatePath()
         {
-            return decisionQueue.Peek().getPath();
+            return decisionQueue.Peek().Path;
         }
     }
 }

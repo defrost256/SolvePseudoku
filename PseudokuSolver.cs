@@ -6,18 +6,39 @@ using System.Threading.Tasks;
 
 namespace SolvePseudoku
 {
+    /// <summary>
+    /// Manages the procedure of solving the pseudoku
+    /// </summary>
     public class PseudokuSolver
     {
         //public delegate void SolveCycleFinished();
 
         //TODO: Read from file
+        /// <summary>
+        /// The cell indexes containing the ones of 2 digit primes
+        /// </summary>
         static readonly int[] primeOneCellIdx = { 2, 4, 6, 8, 10, 12, 14, 16 };
 
+        /// <summary>
+        /// The list of regions in the pseudoku
+        /// </summary>
         List<Region> regions = new List<Region>();
+        /// <summary>
+        /// The list of all cells in the pseudoku
+        /// </summary>
         List<Cell> cells = new List<Cell>();
+        /// <summary>
+        /// The set of cells which still have no value
+        /// </summary>
         HashSet<Cell> unknownCells = new HashSet<Cell>();
+        /// <summary>
+        /// The number of subcycles to run in a solve cycle
+        /// </summary>
         int timeOutCycles;
 
+        /// <summary>
+        /// Returns an array containing the values of the cells in order of their indices
+        /// </summary>
         public int[] CellNums
         {
             get
@@ -31,6 +52,9 @@ namespace SolvePseudoku
             }
         }
 
+        /// <summary>
+        /// Returns a list of the arrays of possible values each cell can have, in order of their indices
+        /// </summary>
         public List<int[]> CellPossibleNums
         {
             get
@@ -45,7 +69,11 @@ namespace SolvePseudoku
         }
 
         //SolveCycleFinished finishedEvent;
-
+        /// <summary>
+        /// Initializes the pseudoku table and the solver
+        /// Creates the regions, and the initial state of the cells
+        /// </summary>
+        /// <param name="timeOutCycles">The number of subcycles to run in a solve cycle</param>
         public void Init(int timeOutCycles/*, SolveCycleFinished cycleFinishedEvent*/)
         {
             this.timeOutCycles = timeOutCycles;
@@ -95,10 +123,15 @@ namespace SolvePseudoku
                 if (!c.HasNum)
                     unknownCells.Add(c);
                 else
-                    c.UpdatePossible(new int[0]);
+                    c.UpdatePossible(new int[]{ c.num });
             }
         }
 
+        /// <summary>
+        /// Performs a solve cycle consising of a number of subcycles
+        /// Each subcycle can update any number of cells as long as there is only one possible number they can have
+        /// </summary>
+        /// <returns>-1 -> a solution of the pseudoku was found, positive error code (4 -> discrepancy was found at the start of the solve cycle; (1-3) the error code of the region update, if one occured), -2 otherwise</returns>
         public int SolveCycle()
         {
             int finds;
@@ -125,6 +158,11 @@ namespace SolvePseudoku
             return -2;
         }
 
+        /// <summary>
+        /// Returns the possible values of the cell with the lowest number of possible values
+        /// </summary>
+        /// <param name="cellIdx">The index of the cell with the lowest number of possible values</param>
+        /// <returns>An array of the possible values of the found cell</returns>
         public int[] GetLeastPossibleNums(out int cellIdx)
         {
             int decideIdx = 0;
@@ -142,24 +180,35 @@ namespace SolvePseudoku
             return decideCell.PossibleNums;
         }
 
+        /// <summary>
+        /// Reinitializes the state of the solver according to the specified values
+        /// </summary>
+        /// <param name="cellNums">The values the cells in the current state have</param>
+        /// <param name="cellPossibleNums">The possible values the cells in the current state can have</param>
         public void LoadState(int[] cellNums, List<int[]> cellPossibleNums)
         {
+            unknownCells.Clear();
             for (int i = 0; i < 40; i++)
             {
                 cells[i].num = cellNums[i];
+                if (!cells[i].HasNum)
+                    unknownCells.Add(cells[i]);
                 cells[i].ResetPossibleNums(false, cellPossibleNums[i]);
             }
         }
 
+        /// <summary>
+        /// Checks if any cell has only one possible value to have, and updates them accordingly
+        /// </summary>
+        /// <returns>The number of cells updated</returns>
         int CheckCellsForCertainPicks()
         {
             int finds = 0;
             foreach(Cell c in unknownCells)
             {
-                if (c.possibleNumCount == 1)
+                if (c.possibleNumCount == 1 && !c.HasNum)
                 {
                     c.num = c[0];
-                    c.UpdatePossible(new int[0]);
                     finds++;
                 }
             }
@@ -167,6 +216,12 @@ namespace SolvePseudoku
             return finds;
         }
 
+        /// <summary>
+        /// Adds a new region to the pseudoku
+        /// Only used internally in constructor
+        /// </summary>
+        /// <param name="cellIndex">The List of cell indices this region contains</param>
+        /// <param name="prime">Indicates if the region should be a PrimeRegion</param>
         void AddRegion(int[] cellIndex, bool prime = false)
         {
             Region newRegion;

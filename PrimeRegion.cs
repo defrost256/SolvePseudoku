@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace SolvePseudoku
 {
+    /// <summary>
+    /// Defines a 2 cell region of the pseudoku containing a 2 digit prime number when read left-right or top-bottom
+    /// </summary>
     class PrimeRegion : Region
     {
 
         static Dictionary<int, int[]> primeTensToOnes = null, primeOnesToTens = null;
+        /// <summary>
+        /// Dictionary mapping the ones of all possible two digit prime number to their tens
+        /// </summary>
         public static Dictionary<int, int[]> TensToOnes
         {
             get
@@ -31,7 +37,10 @@ namespace SolvePseudoku
                 return primeTensToOnes;
             }
         }
-
+        
+        /// <summary>
+        /// Dictionary mapping the tens of all possible two digit prime number to their ones
+        /// </summary>
         public static Dictionary<int, int[]> OnesToTens
         {
             get
@@ -54,6 +63,10 @@ namespace SolvePseudoku
             }
         }
 
+        /// <summary>
+        /// Calculates the remaining possible numbers in the region, and updates the possible numbers of the cells in the region accordingly
+        /// </summary>
+        /// <returns>0 on success. Otherwise error code (1 -> there is no possible number to form a two digit prime, 2 -> a cell in the region has no possible values after update)</returns>
         public override int CalculatePossibleNumbers()
         {
             int tens, ones;
@@ -77,6 +90,10 @@ namespace SolvePseudoku
             return 0;
         }
 
+        /// <summary>
+        /// Checks if the values in the cells can possibly form a 2 digit prime
+        /// </summary>
+        /// <returns>True if they can</returns>
         public override bool CheckDiscrepancies()
         {
             return (cells[0].HasNum && cells[1].HasNum && TensToOnes[cells[0].num].Contains(cells[1].num) ||
