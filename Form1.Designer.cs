@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.SolutionsTab = new System.Windows.Forms.TabPage();
+            this.SolutionListBox = new System.Windows.Forms.ListBox();
+            this.ControlsTabPage = new System.Windows.Forms.TabPage();
             this.CurrentStateLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -75,7 +79,13 @@
             this.runSolveCycleButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.treeViewTabPage = new System.Windows.Forms.TabPage();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.LeafViewAliveTabPage = new System.Windows.Forms.TabPage();
+            this.LeafViewAliveListBox = new System.Windows.Forms.ListBox();
+            this.LeafViewDeadTabPage = new System.Windows.Forms.TabPage();
+            this.LeafViewDeadListBox = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ExpandAllButton = new System.Windows.Forms.Button();
             this.CollepseAllButton = new System.Windows.Forms.Button();
@@ -83,21 +93,24 @@
             this.CycleNumSelect = new System.Windows.Forms.NumericUpDown();
             this.panel4 = new System.Windows.Forms.Panel();
             this.DecisionStateLabel = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.SolutionListBox = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.SolutionsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.treeViewTabPage.SuspendLayout();
+            this.LeafViewAliveTabPage.SuspendLayout();
+            this.LeafViewDeadTabPage.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CycleNumSelect)).BeginInit();
             this.panel4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Controls.Add(this.CurrentStateLabel);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
@@ -145,6 +158,48 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(481, 691);
             this.panel1.TabIndex = 0;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.SolutionsTab);
+            this.tabControl1.Controls.Add(this.ControlsTabPage);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 510);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(481, 181);
+            this.tabControl1.TabIndex = 3;
+            // 
+            // SolutionsTab
+            // 
+            this.SolutionsTab.Controls.Add(this.SolutionListBox);
+            this.SolutionsTab.Location = new System.Drawing.Point(4, 22);
+            this.SolutionsTab.Name = "SolutionsTab";
+            this.SolutionsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.SolutionsTab.Size = new System.Drawing.Size(473, 155);
+            this.SolutionsTab.TabIndex = 0;
+            this.SolutionsTab.Text = "Solutions";
+            this.SolutionsTab.UseVisualStyleBackColor = true;
+            // 
+            // SolutionListBox
+            // 
+            this.SolutionListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SolutionListBox.FormattingEnabled = true;
+            this.SolutionListBox.Location = new System.Drawing.Point(3, 3);
+            this.SolutionListBox.Name = "SolutionListBox";
+            this.SolutionListBox.Size = new System.Drawing.Size(467, 149);
+            this.SolutionListBox.TabIndex = 0;
+            this.SolutionListBox.SelectedIndexChanged += new System.EventHandler(this.SolutionListBox_SelectedIndexChanged);
+            // 
+            // ControlsTabPage
+            // 
+            this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ControlsTabPage.Name = "ControlsTabPage";
+            this.ControlsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ControlsTabPage.Size = new System.Drawing.Size(473, 155);
+            this.ControlsTabPage.TabIndex = 1;
+            this.ControlsTabPage.Text = "Controls";
+            this.ControlsTabPage.UseVisualStyleBackColor = true;
             // 
             // CurrentStateLabel
             // 
@@ -268,7 +323,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(350, 283);
+            this.label25.Location = new System.Drawing.Point(350, 280);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(19, 13);
             this.label25.TabIndex = 1;
@@ -574,7 +629,7 @@
             this.runSolveCycleButton.TabIndex = 1;
             this.runSolveCycleButton.Text = "Solve Cycle";
             this.runSolveCycleButton.UseVisualStyleBackColor = true;
-            this.runSolveCycleButton.Click += new System.EventHandler(this.SolveCycle);
+            this.runSolveCycleButton.Click += new System.EventHandler(this.SolveOne);
             // 
             // panel2
             // 
@@ -589,21 +644,86 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.treeView1);
+            this.panel5.Controls.Add(this.tabControl2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 29);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(427, 640);
             this.panel5.TabIndex = 6;
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.treeViewTabPage);
+            this.tabControl2.Controls.Add(this.LeafViewAliveTabPage);
+            this.tabControl2.Controls.Add(this.LeafViewDeadTabPage);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(0, 0);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(427, 640);
+            this.tabControl2.TabIndex = 0;
+            // 
+            // treeViewTabPage
+            // 
+            this.treeViewTabPage.Controls.Add(this.treeView1);
+            this.treeViewTabPage.Location = new System.Drawing.Point(4, 22);
+            this.treeViewTabPage.Name = "treeViewTabPage";
+            this.treeViewTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.treeViewTabPage.Size = new System.Drawing.Size(419, 614);
+            this.treeViewTabPage.TabIndex = 0;
+            this.treeViewTabPage.Text = "Tree View";
+            this.treeViewTabPage.UseVisualStyleBackColor = true;
+            // 
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(427, 640);
+            this.treeView1.Size = new System.Drawing.Size(413, 608);
             this.treeView1.TabIndex = 3;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // LeafViewAliveTabPage
+            // 
+            this.LeafViewAliveTabPage.Controls.Add(this.LeafViewAliveListBox);
+            this.LeafViewAliveTabPage.Location = new System.Drawing.Point(4, 22);
+            this.LeafViewAliveTabPage.Name = "LeafViewAliveTabPage";
+            this.LeafViewAliveTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.LeafViewAliveTabPage.Size = new System.Drawing.Size(419, 614);
+            this.LeafViewAliveTabPage.TabIndex = 1;
+            this.LeafViewAliveTabPage.Text = "Leaf View (alive)";
+            this.LeafViewAliveTabPage.UseVisualStyleBackColor = true;
+            // 
+            // LeafViewAliveListBox
+            // 
+            this.LeafViewAliveListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LeafViewAliveListBox.FormattingEnabled = true;
+            this.LeafViewAliveListBox.Location = new System.Drawing.Point(3, 3);
+            this.LeafViewAliveListBox.Name = "LeafViewAliveListBox";
+            this.LeafViewAliveListBox.Size = new System.Drawing.Size(413, 608);
+            this.LeafViewAliveListBox.TabIndex = 0;
+            this.LeafViewAliveListBox.SelectedIndexChanged += new System.EventHandler(this.LeafViewAliveListBox_SelectedIndexChanged);
+            // 
+            // LeafViewDeadTabPage
+            // 
+            this.LeafViewDeadTabPage.Controls.Add(this.LeafViewDeadListBox);
+            this.LeafViewDeadTabPage.Location = new System.Drawing.Point(4, 22);
+            this.LeafViewDeadTabPage.Name = "LeafViewDeadTabPage";
+            this.LeafViewDeadTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.LeafViewDeadTabPage.Size = new System.Drawing.Size(419, 614);
+            this.LeafViewDeadTabPage.TabIndex = 2;
+            this.LeafViewDeadTabPage.Text = "Leaf View (dead)";
+            this.LeafViewDeadTabPage.UseVisualStyleBackColor = true;
+            // 
+            // LeafViewDeadListBox
+            // 
+            this.LeafViewDeadListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LeafViewDeadListBox.FormattingEnabled = true;
+            this.LeafViewDeadListBox.Location = new System.Drawing.Point(3, 3);
+            this.LeafViewDeadListBox.Name = "LeafViewDeadListBox";
+            this.LeafViewDeadListBox.Size = new System.Drawing.Size(413, 608);
+            this.LeafViewDeadListBox.TabIndex = 0;
+            this.LeafViewDeadListBox.SelectedIndexChanged += new System.EventHandler(this.LeafViewDeadListBox_SelectedIndexChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -679,27 +799,6 @@
             this.DecisionStateLabel.TabIndex = 4;
             this.DecisionStateLabel.Text = " ";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.SolutionListBox);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 510);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(481, 181);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Solutions";
-            // 
-            // SolutionListBox
-            // 
-            this.SolutionListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SolutionListBox.FormattingEnabled = true;
-            this.SolutionListBox.Location = new System.Drawing.Point(3, 16);
-            this.SolutionListBox.Name = "SolutionListBox";
-            this.SolutionListBox.Size = new System.Drawing.Size(475, 162);
-            this.SolutionListBox.TabIndex = 0;
-            this.SolutionListBox.SelectedIndexChanged += new System.EventHandler(this.SolutionListBox_SelectedIndexChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -711,14 +810,19 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.SolutionsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.treeViewTabPage.ResumeLayout(false);
+            this.LeafViewAliveTabPage.ResumeLayout(false);
+            this.LeafViewDeadTabPage.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CycleNumSelect)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -779,8 +883,16 @@
         private System.Windows.Forms.Button SolveAllButton;
         private System.Windows.Forms.NumericUpDown CycleNumSelect;
         private System.Windows.Forms.Label CurrentStateLabel;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox SolutionListBox;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage SolutionsTab;
+        private System.Windows.Forms.TabPage ControlsTabPage;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage treeViewTabPage;
+        private System.Windows.Forms.TabPage LeafViewAliveTabPage;
+        private System.Windows.Forms.ListBox LeafViewAliveListBox;
+        private System.Windows.Forms.TabPage LeafViewDeadTabPage;
+        private System.Windows.Forms.ListBox LeafViewDeadListBox;
     }
 }
 

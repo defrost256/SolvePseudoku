@@ -77,15 +77,15 @@ namespace SolvePseudoku
                 if (ones == -1)
                 {
                     if (cells[1].UpdatePossible(TensToOnes[tens]) <= 0)
-                        return 2;
+                        return 4;
                 }
                 else if (!TensToOnes[tens].Contains(ones))
-                    return 1;
+                    return 3;
             }
             else if(ones != -1)
             {
                 if (cells[0].UpdatePossible(OnesToTens[ones]) <= 0)
-                    return 2;
+                    return 4;
             }
             return 0;
         }

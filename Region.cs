@@ -18,5 +18,19 @@ namespace SolvePseudoku
 
         public abstract int CalculatePossibleNumbers();
         public abstract bool CheckDiscrepancies();
+
+        public string getCellNumStr()
+        {
+            StringBuilder sb = new StringBuilder("{");
+            foreach(Cell c in cells)
+            {
+                if (c.HasNum)
+                    sb.Append(c.num + ", ");
+            }
+            if (sb.Length > 1)
+                sb.Remove(sb.Length - 2, 2);
+            sb.Append("}");
+            return sb.ToString();
+        }
     }
 }

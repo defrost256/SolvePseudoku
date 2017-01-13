@@ -33,6 +33,7 @@ namespace SolvePseudoku
                         tmpState.cells[i] = possibleNums[n];
                 }
                 tmpState.possibleNums = current.possibleNums;
+                //tmpState.possibleNums[cellIdx] = new int[] { possibleNums[n] };
                 decisionQueue.Enqueue(tmpState);
             }
         }
@@ -46,12 +47,26 @@ namespace SolvePseudoku
 
         public DecisionState GetNextDecision()
         {
+            if (decisionQueue.Count == 0)
+                return null;
             return decisionQueue.Peek();
         }
 
         public string getCurrentStatePath()
         {
             return decisionQueue.Peek().Path;
+        }
+
+        public void PrintQueue()
+        {
+            StringBuilder sb = new StringBuilder(decisionQueue.Count + "{");
+            foreach(DecisionState s in decisionQueue)
+            {
+                sb.Append(s.Path + ", ");
+            }
+            sb.Remove(sb.Length - 2, 2);
+            sb.Append("}");
+            Console.WriteLine(sb.ToString());
         }
     }
 }

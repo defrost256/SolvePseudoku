@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SolvePseudoku.BigRegion">
+    <Position X="1.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>BigRegion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolvePseudoku.Cell" Collapsed="true">
+    <Position X="6.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQASAAAAAAAQAACAAAAAAAAAAQAABAQBBAAAAAQAE=</HashCode>
+      <FileName>Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolvePseudoku.DecisionState">
+    <Position X="8.25" Y="3" Width="1.5" />
+    <AssociationLine Name="childDecisions" Type="SolvePseudoku.DecisionState" ManuallyRouted="true">
+      <Path>
+        <Point X="8.782" Y="6.353" />
+        <Point X="8.782" Y="6.926" />
+        <Point X="9.228" Y="6.926" />
+        <Point X="9.228" Y="6.353" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.537" Y="0.289" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="parentDecision" Type="SolvePseudoku.DecisionState" ManuallyRouted="true">
+      <Path>
+        <Point X="8.782" Y="3" />
+        <Point X="8.782" Y="2.521" />
+        <Point X="9.228" Y="2.521" />
+        <Point X="9.228" Y="3" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.527" Y="0.195" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIEAIACAACQAICAAAEAAAAAAAQAAAAQAA=</HashCode>
+      <FileName>DecisionState.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="parentDecision" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="childDecisions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SolvePseudoku.Region">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAIAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Region.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="cells" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SolvePseudoku.PrimeRegion">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAACAAAAAAAAAAAAAAJAQAAAAAAAAEAAAA=</HashCode>
+      <FileName>PrimeRegion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolvePseudoku.PseudokuSolver">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <AssociationLine Name="cells" Type="SolvePseudoku.Cell" FixedToPoint="true">
+      <Path>
+        <Point X="10.25" Y="1.75" />
+        <Point X="8.25" Y="1.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAQAAQAAgIAAADAAAAAAAAAABKAAABEAE=</HashCode>
+      <FileName>PseudokuSolver.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="cells" />
+      <Field Name="regions" />
+      <Field Name="unknownCells" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SolvePseudoku.DecisionTree">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <AssociationLine Name="decisionQueue" Type="SolvePseudoku.DecisionState" FixedFromPoint="true">
+      <Path>
+        <Point X="7.5" Y="3.552" />
+        <Point X="8.25" Y="3.552" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="root" Type="SolvePseudoku.DecisionState" FixedFromPoint="true">
+      <Path>
+        <Point X="7.5" Y="4" />
+        <Point X="8.25" Y="4" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAgAAAAMAgAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>DecisionTree.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="root" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="decisionQueue" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SolvePseudoku.Form1" Collapsed="true">
+    <Position X="10" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/wAIGRBAgCASEBMAAACAACACAKEACAiASCEAIQBBIDA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="solver" />
+      <Field Name="decisions" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

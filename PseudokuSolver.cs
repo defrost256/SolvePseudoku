@@ -88,7 +88,7 @@ namespace SolvePseudoku
 
             AddRegion(new int[] { 0, 1, 2, 5, 6, 9, 10, 11, 12, 17, 18, 19, 20, 21, 28, 31, 32, 34, 37, 38 });
             AddRegion(new int[] { 3, 4, 7, 8, 13, 14, 15, 16, 22, 23, 24, 25, 26, 27, 29, 30, 33, 35, 36, 39 });
-            AddRegion(new int[] { 0, 1, 2, 3, 4, 7, 10, 13, 14, 17, 18, 22, 24, 26, 28, 29, 30, 31, 32, 33 });
+            AddRegion(new int[] { 0, 1, 2, 3, 4, 9, 10, 13, 14, 17, 18, 22, 24, 26, 28, 29, 30, 31, 32, 33 });
             AddRegion(new int[] { 5, 6, 7, 8, 11, 12, 15, 16, 19, 20, 21, 23, 25, 27, 34, 35, 36, 37, 38, 39 });
             AddRegion(new int[] { 0, 9, 10, 15, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 31, 32, 33, 36, 38, 39 });
             AddRegion(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 21, 22, 28, 29, 30, 34, 35, 37 });
@@ -140,7 +140,7 @@ namespace SolvePseudoku
             foreach(Region r in regions)
             {
                 if (!r.CheckDiscrepancies())
-                    return 4;
+                    return 5;
             }
             do
             {
@@ -165,8 +165,13 @@ namespace SolvePseudoku
         /// <returns>An array of the possible values of the found cell</returns>
         public int[] GetLeastPossibleNums(out int cellIdx)
         {
-            int decideIdx = 0;
-            Cell decideCell = cells[0], c;
+            int decideIdx = -1;
+            for(int i = 0; i < 40 && decideIdx < 0; i++)
+            {
+                if (!cells[i].HasNum)
+                    decideIdx = i;
+            }
+            Cell decideCell = cells[decideIdx], c;
             for (int i = 0; i < 40; i++)
             {
                 c = cells[i];
@@ -237,6 +242,14 @@ namespace SolvePseudoku
                 c.Regions.Add(newRegion);
             }
             regions.Add(newRegion);
+        }
+
+        public void printRegions()
+        {
+            for(int i = 0; i < regions.Count; i++)
+            {
+                Console.WriteLine("Region " + i + ": " + regions[i].getCellNumStr());
+            }
         }
     }
 }
