@@ -36,12 +36,6 @@ namespace SolvePseudoku
         /// </summary>
         int timeOutCycles;
 
-        int cycleCount = 0;
-        public int CycleCount { get { return cycleCount; } }
-
-        int subCycleCount = 0;
-        public int SubCycleCount { get { return subCycleCount; } }
-
         /// <summary>
         /// Returns an array containing the values of the cells in order of their indices
         /// </summary>
@@ -143,7 +137,7 @@ namespace SolvePseudoku
             int finds;
             int cycles = 0;
             int errCode;
-            cycleCount++;
+            Stats.Instance.cycles++;
             foreach(Region r in regions)
             {
                 if (!r.CheckDiscrepancies())
@@ -153,13 +147,12 @@ namespace SolvePseudoku
             {
                 while ((finds = CheckCellsForCertainPicks()) == 0 && cycles < timeOutCycles)
                 {
-                    subCycleCount++;
+                    Stats.Instance.subCycles++;
                     foreach (Region r in regions)
                         if ((errCode = r.CalculatePossibleNumbers()) != 0)
                             return errCode;
                     cycles++;
                 }
-                //finishedEvent();
             } while (finds > 0);
             if (unknownCells.Count == 0)
             {
@@ -231,6 +224,7 @@ namespace SolvePseudoku
                 }
             }
             unknownCells.RemoveWhere(c => c.HasNum);
+            Stats.Instance.avgFindPerSubcycle = (Stats.Instance.avgFindPerSubcycle * Stats.Instance.subCycles + finds) / (Stats.Instance.subCycles + 1);
             return finds;
         }
 

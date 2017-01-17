@@ -34,6 +34,27 @@
             this.SolutionsTab = new System.Windows.Forms.TabPage();
             this.SolutionListBox = new System.Windows.Forms.ListBox();
             this.StatsTabPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.statAvgFindsPerSubcycleLabel = new System.Windows.Forms.Label();
+            this.statDecisionQueueSizeLabel = new System.Windows.Forms.Label();
+            this.statAllDecisionsLabel = new System.Windows.Forms.Label();
+            this.statSolutionsLabel = new System.Windows.Forms.Label();
+            this.statDeadLeavesLabel = new System.Windows.Forms.Label();
+            this.statAliveLeavesLabel = new System.Windows.Forms.Label();
+            this.StatSubcyclesLabel = new System.Windows.Forms.Label();
+            this.statCyclesLabel = new System.Windows.Forms.Label();
+            this.statLabel_3 = new System.Windows.Forms.Label();
+            this.statLabel_0 = new System.Windows.Forms.Label();
+            this.statLabel_2 = new System.Windows.Forms.Label();
+            this.statLabel_1 = new System.Windows.Forms.Label();
+            this.statLabel_4 = new System.Windows.Forms.Label();
+            this.statLabel_5 = new System.Windows.Forms.Label();
+            this.statLabel_6 = new System.Windows.Forms.Label();
+            this.statLabel_7 = new System.Windows.Forms.Label();
+            this.ControlsTabPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.OverlayControlLabel = new System.Windows.Forms.Label();
+            this.overlayComboBox = new System.Windows.Forms.ComboBox();
             this.CurrentStateLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -93,14 +114,13 @@
             this.CycleNumSelect = new System.Windows.Forms.NumericUpDown();
             this.panel4 = new System.Windows.Forms.Panel();
             this.DecisionStateLabel = new System.Windows.Forms.Label();
-            this.CycleLabel = new System.Windows.Forms.Label();
-            this.ControlsTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.OverlayControlLabel = new System.Windows.Forms.Label();
-            this.overlayComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SolutionsTab.SuspendLayout();
+            this.StatsTabPage.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.ControlsTabPage.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -111,8 +131,6 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CycleNumSelect)).BeginInit();
             this.panel4.SuspendLayout();
-            this.ControlsTabPage.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -201,6 +219,7 @@
             // 
             // StatsTabPage
             // 
+            this.StatsTabPage.Controls.Add(this.tableLayoutPanel2);
             this.StatsTabPage.Location = new System.Drawing.Point(4, 22);
             this.StatsTabPage.Name = "StatsTabPage";
             this.StatsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -208,6 +227,264 @@
             this.StatsTabPage.TabIndex = 1;
             this.StatsTabPage.Text = "Stats";
             this.StatsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.AutoScroll = true;
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.06681F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.93318F));
+            this.tableLayoutPanel2.Controls.Add(this.statAvgFindsPerSubcycleLabel, 1, 7);
+            this.tableLayoutPanel2.Controls.Add(this.statDecisionQueueSizeLabel, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.statAllDecisionsLabel, 1, 5);
+            this.tableLayoutPanel2.Controls.Add(this.statSolutionsLabel, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.statDeadLeavesLabel, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.statAliveLeavesLabel, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.StatSubcyclesLabel, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.statCyclesLabel, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.statLabel_3, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.statLabel_0, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.statLabel_2, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.statLabel_1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.statLabel_4, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.statLabel_5, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.statLabel_6, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.statLabel_7, 0, 7);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 8;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(467, 149);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // statAvgFindsPerSubcycleLabel
+            // 
+            this.statAvgFindsPerSubcycleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statAvgFindsPerSubcycleLabel.AutoSize = true;
+            this.statAvgFindsPerSubcycleLabel.Location = new System.Drawing.Point(139, 151);
+            this.statAvgFindsPerSubcycleLabel.Name = "statAvgFindsPerSubcycleLabel";
+            this.statAvgFindsPerSubcycleLabel.Size = new System.Drawing.Size(13, 13);
+            this.statAvgFindsPerSubcycleLabel.TabIndex = 15;
+            this.statAvgFindsPerSubcycleLabel.Text = "0";
+            // 
+            // statDecisionQueueSizeLabel
+            // 
+            this.statDecisionQueueSizeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statDecisionQueueSizeLabel.AutoSize = true;
+            this.statDecisionQueueSizeLabel.Location = new System.Drawing.Point(139, 130);
+            this.statDecisionQueueSizeLabel.Name = "statDecisionQueueSizeLabel";
+            this.statDecisionQueueSizeLabel.Size = new System.Drawing.Size(13, 13);
+            this.statDecisionQueueSizeLabel.TabIndex = 14;
+            this.statDecisionQueueSizeLabel.Text = "0";
+            // 
+            // statAllDecisionsLabel
+            // 
+            this.statAllDecisionsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statAllDecisionsLabel.AutoSize = true;
+            this.statAllDecisionsLabel.Location = new System.Drawing.Point(139, 109);
+            this.statAllDecisionsLabel.Name = "statAllDecisionsLabel";
+            this.statAllDecisionsLabel.Size = new System.Drawing.Size(13, 13);
+            this.statAllDecisionsLabel.TabIndex = 13;
+            this.statAllDecisionsLabel.Text = "0";
+            // 
+            // statSolutionsLabel
+            // 
+            this.statSolutionsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statSolutionsLabel.AutoSize = true;
+            this.statSolutionsLabel.Location = new System.Drawing.Point(139, 88);
+            this.statSolutionsLabel.Name = "statSolutionsLabel";
+            this.statSolutionsLabel.Size = new System.Drawing.Size(13, 13);
+            this.statSolutionsLabel.TabIndex = 12;
+            this.statSolutionsLabel.Text = "0";
+            // 
+            // statDeadLeavesLabel
+            // 
+            this.statDeadLeavesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statDeadLeavesLabel.AutoSize = true;
+            this.statDeadLeavesLabel.Location = new System.Drawing.Point(139, 67);
+            this.statDeadLeavesLabel.Name = "statDeadLeavesLabel";
+            this.statDeadLeavesLabel.Size = new System.Drawing.Size(13, 13);
+            this.statDeadLeavesLabel.TabIndex = 11;
+            this.statDeadLeavesLabel.Text = "0";
+            // 
+            // statAliveLeavesLabel
+            // 
+            this.statAliveLeavesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statAliveLeavesLabel.AutoSize = true;
+            this.statAliveLeavesLabel.Location = new System.Drawing.Point(139, 46);
+            this.statAliveLeavesLabel.Name = "statAliveLeavesLabel";
+            this.statAliveLeavesLabel.Size = new System.Drawing.Size(13, 13);
+            this.statAliveLeavesLabel.TabIndex = 10;
+            this.statAliveLeavesLabel.Text = "0";
+            // 
+            // StatSubcyclesLabel
+            // 
+            this.StatSubcyclesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.StatSubcyclesLabel.AutoSize = true;
+            this.StatSubcyclesLabel.Location = new System.Drawing.Point(139, 25);
+            this.StatSubcyclesLabel.Name = "StatSubcyclesLabel";
+            this.StatSubcyclesLabel.Size = new System.Drawing.Size(13, 13);
+            this.StatSubcyclesLabel.TabIndex = 9;
+            this.StatSubcyclesLabel.Text = "0";
+            // 
+            // statCyclesLabel
+            // 
+            this.statCyclesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statCyclesLabel.AutoSize = true;
+            this.statCyclesLabel.Location = new System.Drawing.Point(139, 4);
+            this.statCyclesLabel.Name = "statCyclesLabel";
+            this.statCyclesLabel.Size = new System.Drawing.Size(13, 13);
+            this.statCyclesLabel.TabIndex = 8;
+            this.statCyclesLabel.Text = "0";
+            // 
+            // statLabel_3
+            // 
+            this.statLabel_3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statLabel_3.AutoSize = true;
+            this.statLabel_3.Location = new System.Drawing.Point(4, 67);
+            this.statLabel_3.Name = "statLabel_3";
+            this.statLabel_3.Size = new System.Drawing.Size(71, 13);
+            this.statLabel_3.TabIndex = 6;
+            this.statLabel_3.Text = "Dead Leaves";
+            // 
+            // statLabel_0
+            // 
+            this.statLabel_0.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statLabel_0.AutoSize = true;
+            this.statLabel_0.Location = new System.Drawing.Point(4, 4);
+            this.statLabel_0.Name = "statLabel_0";
+            this.statLabel_0.Size = new System.Drawing.Size(38, 13);
+            this.statLabel_0.TabIndex = 0;
+            this.statLabel_0.Text = "Cycles";
+            // 
+            // statLabel_2
+            // 
+            this.statLabel_2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statLabel_2.AutoSize = true;
+            this.statLabel_2.Location = new System.Drawing.Point(4, 46);
+            this.statLabel_2.Name = "statLabel_2";
+            this.statLabel_2.Size = new System.Drawing.Size(68, 13);
+            this.statLabel_2.TabIndex = 2;
+            this.statLabel_2.Text = "Alive Leaves";
+            // 
+            // statLabel_1
+            // 
+            this.statLabel_1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statLabel_1.AutoSize = true;
+            this.statLabel_1.Location = new System.Drawing.Point(4, 25);
+            this.statLabel_1.Name = "statLabel_1";
+            this.statLabel_1.Size = new System.Drawing.Size(60, 13);
+            this.statLabel_1.TabIndex = 1;
+            this.statLabel_1.Text = "Sub Cycles";
+            // 
+            // statLabel_4
+            // 
+            this.statLabel_4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statLabel_4.AutoSize = true;
+            this.statLabel_4.Location = new System.Drawing.Point(4, 88);
+            this.statLabel_4.Name = "statLabel_4";
+            this.statLabel_4.Size = new System.Drawing.Size(50, 13);
+            this.statLabel_4.TabIndex = 7;
+            this.statLabel_4.Text = "Solutions";
+            // 
+            // statLabel_5
+            // 
+            this.statLabel_5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statLabel_5.AutoSize = true;
+            this.statLabel_5.Location = new System.Drawing.Point(4, 109);
+            this.statLabel_5.Name = "statLabel_5";
+            this.statLabel_5.Size = new System.Drawing.Size(67, 13);
+            this.statLabel_5.TabIndex = 5;
+            this.statLabel_5.Text = "All Decisions";
+            // 
+            // statLabel_6
+            // 
+            this.statLabel_6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statLabel_6.AutoSize = true;
+            this.statLabel_6.Location = new System.Drawing.Point(4, 130);
+            this.statLabel_6.Name = "statLabel_6";
+            this.statLabel_6.Size = new System.Drawing.Size(106, 13);
+            this.statLabel_6.TabIndex = 4;
+            this.statLabel_6.Text = "Decision Queue Size";
+            // 
+            // statLabel_7
+            // 
+            this.statLabel_7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statLabel_7.AutoSize = true;
+            this.statLabel_7.Location = new System.Drawing.Point(4, 151);
+            this.statLabel_7.Name = "statLabel_7";
+            this.statLabel_7.Size = new System.Drawing.Size(120, 13);
+            this.statLabel_7.TabIndex = 3;
+            this.statLabel_7.Text = "Avg Finds Per Subcycle";
+            // 
+            // ControlsTabPage
+            // 
+            this.ControlsTabPage.Controls.Add(this.tableLayoutPanel1);
+            this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ControlsTabPage.Name = "ControlsTabPage";
+            this.ControlsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ControlsTabPage.Size = new System.Drawing.Size(473, 155);
+            this.ControlsTabPage.TabIndex = 2;
+            this.ControlsTabPage.Text = "Controls";
+            this.ControlsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.0621F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.9379F));
+            this.tableLayoutPanel1.Controls.Add(this.OverlayControlLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.overlayComboBox, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(467, 149);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // OverlayControlLabel
+            // 
+            this.OverlayControlLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.OverlayControlLabel.AutoSize = true;
+            this.OverlayControlLabel.Location = new System.Drawing.Point(3, 6);
+            this.OverlayControlLabel.Name = "OverlayControlLabel";
+            this.OverlayControlLabel.Size = new System.Drawing.Size(43, 13);
+            this.OverlayControlLabel.TabIndex = 0;
+            this.OverlayControlLabel.Text = "Overlay";
+            // 
+            // overlayComboBox
+            // 
+            this.overlayComboBox.FormattingEnabled = true;
+            this.overlayComboBox.Items.AddRange(new object[] {
+            "None",
+            "Left",
+            "Right",
+            "Top",
+            "Bottom",
+            "Top-Bottom Horizontal",
+            "Top-Bottom Horizontal Inv.",
+            "Bottom-Top Horizontal",
+            "Bottom-Top Horizontal Inv.",
+            "Left-Right Vertical",
+            "Left-Right Vertical Inv.",
+            "Right-Left Vertical",
+            "Right-Left Vertical Inv."});
+            this.overlayComboBox.Location = new System.Drawing.Point(64, 3);
+            this.overlayComboBox.Name = "overlayComboBox";
+            this.overlayComboBox.Size = new System.Drawing.Size(201, 21);
+            this.overlayComboBox.TabIndex = 1;
+            this.overlayComboBox.SelectedIndexChanged += new System.EventHandler(this.overlayComboBox_SelectedIndexChanged);
             // 
             // CurrentStateLabel
             // 
@@ -697,7 +974,7 @@
             this.LeafViewAliveTabPage.Location = new System.Drawing.Point(4, 22);
             this.LeafViewAliveTabPage.Name = "LeafViewAliveTabPage";
             this.LeafViewAliveTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.LeafViewAliveTabPage.Size = new System.Drawing.Size(419, 614);
+            this.LeafViewAliveTabPage.Size = new System.Drawing.Size(674, 614);
             this.LeafViewAliveTabPage.TabIndex = 1;
             this.LeafViewAliveTabPage.Text = "Leaf View (alive)";
             this.LeafViewAliveTabPage.UseVisualStyleBackColor = true;
@@ -708,7 +985,7 @@
             this.LeafViewAliveListBox.FormattingEnabled = true;
             this.LeafViewAliveListBox.Location = new System.Drawing.Point(3, 3);
             this.LeafViewAliveListBox.Name = "LeafViewAliveListBox";
-            this.LeafViewAliveListBox.Size = new System.Drawing.Size(413, 608);
+            this.LeafViewAliveListBox.Size = new System.Drawing.Size(668, 608);
             this.LeafViewAliveListBox.TabIndex = 0;
             this.LeafViewAliveListBox.SelectedIndexChanged += new System.EventHandler(this.LeafViewAliveListBox_SelectedIndexChanged);
             // 
@@ -718,7 +995,7 @@
             this.LeafViewDeadTabPage.Location = new System.Drawing.Point(4, 22);
             this.LeafViewDeadTabPage.Name = "LeafViewDeadTabPage";
             this.LeafViewDeadTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.LeafViewDeadTabPage.Size = new System.Drawing.Size(419, 614);
+            this.LeafViewDeadTabPage.Size = new System.Drawing.Size(674, 614);
             this.LeafViewDeadTabPage.TabIndex = 2;
             this.LeafViewDeadTabPage.Text = "Leaf View (dead)";
             this.LeafViewDeadTabPage.UseVisualStyleBackColor = true;
@@ -729,7 +1006,7 @@
             this.LeafViewDeadListBox.FormattingEnabled = true;
             this.LeafViewDeadListBox.Location = new System.Drawing.Point(3, 3);
             this.LeafViewDeadListBox.Name = "LeafViewDeadListBox";
-            this.LeafViewDeadListBox.Size = new System.Drawing.Size(413, 608);
+            this.LeafViewDeadListBox.Size = new System.Drawing.Size(668, 608);
             this.LeafViewDeadListBox.TabIndex = 0;
             this.LeafViewDeadListBox.SelectedIndexChanged += new System.EventHandler(this.LeafViewDeadListBox_SelectedIndexChanged);
             // 
@@ -740,7 +1017,6 @@
             this.flowLayoutPanel1.Controls.Add(this.CollepseAllButton);
             this.flowLayoutPanel1.Controls.Add(this.SolveAllButton);
             this.flowLayoutPanel1.Controls.Add(this.CycleNumSelect);
-            this.flowLayoutPanel1.Controls.Add(this.CycleLabel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -808,76 +1084,6 @@
             this.DecisionStateLabel.TabIndex = 4;
             this.DecisionStateLabel.Text = " ";
             // 
-            // CycleLabel
-            // 
-            this.CycleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CycleLabel.AutoSize = true;
-            this.CycleLabel.Location = new System.Drawing.Point(388, 8);
-            this.CycleLabel.Name = "CycleLabel";
-            this.CycleLabel.Size = new System.Drawing.Size(61, 13);
-            this.CycleLabel.TabIndex = 6;
-            this.CycleLabel.Text = "Cycles: 0/0";
-            // 
-            // ControlsTabPage
-            // 
-            this.ControlsTabPage.Controls.Add(this.tableLayoutPanel1);
-            this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.ControlsTabPage.Name = "ControlsTabPage";
-            this.ControlsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ControlsTabPage.Size = new System.Drawing.Size(473, 155);
-            this.ControlsTabPage.TabIndex = 2;
-            this.ControlsTabPage.Text = "Controls";
-            this.ControlsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.0621F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.9379F));
-            this.tableLayoutPanel1.Controls.Add(this.OverlayControlLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.overlayComboBox, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(467, 149);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // OverlayControlLabel
-            // 
-            this.OverlayControlLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.OverlayControlLabel.AutoSize = true;
-            this.OverlayControlLabel.Location = new System.Drawing.Point(3, 6);
-            this.OverlayControlLabel.Name = "OverlayControlLabel";
-            this.OverlayControlLabel.Size = new System.Drawing.Size(43, 13);
-            this.OverlayControlLabel.TabIndex = 0;
-            this.OverlayControlLabel.Text = "Overlay";
-            // 
-            // overlayComboBox
-            // 
-            this.overlayComboBox.FormattingEnabled = true;
-            this.overlayComboBox.Items.AddRange(new object[] {
-            "None",
-            "Left",
-            "Right",
-            "Top",
-            "Bottom",
-            "Top-Bottom Horizontal",
-            "Top-Bottom Horizontal Inv.",
-            "Bottom-Top Horizontal",
-            "Bottom-Top Horizontal Inv.",
-            "Left-Right Vertical",
-            "Left-Right Vertical Inv.",
-            "Right-Left Vertical",
-            "Right-Left Vertical Inv."});
-            this.overlayComboBox.Location = new System.Drawing.Point(64, 3);
-            this.overlayComboBox.Name = "overlayComboBox";
-            this.overlayComboBox.Size = new System.Drawing.Size(201, 21);
-            this.overlayComboBox.TabIndex = 1;
-            this.overlayComboBox.SelectedIndexChanged += new System.EventHandler(this.overlayComboBox_SelectedIndexChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -891,6 +1097,12 @@
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.SolutionsTab.ResumeLayout(false);
+            this.StatsTabPage.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.ControlsTabPage.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -899,13 +1111,9 @@
             this.LeafViewAliveTabPage.ResumeLayout(false);
             this.LeafViewDeadTabPage.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CycleNumSelect)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.ControlsTabPage.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -976,11 +1184,27 @@
         private System.Windows.Forms.ListBox LeafViewAliveListBox;
         private System.Windows.Forms.TabPage LeafViewDeadTabPage;
         private System.Windows.Forms.ListBox LeafViewDeadListBox;
-        private System.Windows.Forms.Label CycleLabel;
         private System.Windows.Forms.TabPage ControlsTabPage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label OverlayControlLabel;
         private System.Windows.Forms.ComboBox overlayComboBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label statLabel_0;
+        private System.Windows.Forms.Label statLabel_2;
+        private System.Windows.Forms.Label statLabel_1;
+        private System.Windows.Forms.Label statLabel_5;
+        private System.Windows.Forms.Label statLabel_6;
+        private System.Windows.Forms.Label statLabel_7;
+        private System.Windows.Forms.Label statLabel_3;
+        private System.Windows.Forms.Label statLabel_4;
+        private System.Windows.Forms.Label statAvgFindsPerSubcycleLabel;
+        private System.Windows.Forms.Label statDecisionQueueSizeLabel;
+        private System.Windows.Forms.Label statAllDecisionsLabel;
+        private System.Windows.Forms.Label statSolutionsLabel;
+        private System.Windows.Forms.Label statDeadLeavesLabel;
+        private System.Windows.Forms.Label statAliveLeavesLabel;
+        private System.Windows.Forms.Label StatSubcyclesLabel;
+        private System.Windows.Forms.Label statCyclesLabel;
     }
 }
 

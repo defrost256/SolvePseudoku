@@ -24,6 +24,7 @@ namespace SolvePseudoku
             DecisionState tmpState, current = decisionQueue.Peek();
             for (int n = 0; n < possibleNums.Length; n++)
             {
+                Stats.Instance.allDecisionStates++;
                 tmpState = new DecisionState(current);
                 for (int i = 0; i < 40; i++)
                 {
@@ -36,6 +37,7 @@ namespace SolvePseudoku
                 //tmpState.possibleNums[cellIdx] = new int[] { possibleNums[n] };
                 decisionQueue.Enqueue(tmpState);
             }
+            Stats.Instance.queueSize = decisionQueue.Count;
         }
 
         public void FinalizeBranch(int[] cells, List<int[]> possibleNums, bool dead = false)
@@ -43,6 +45,7 @@ namespace SolvePseudoku
             DecisionState current = decisionQueue.Dequeue();
             cells.CopyTo(current.cells, 0);
             current.possibleNums = possibleNums;
+            Stats.Instance.queueSize = decisionQueue.Count;
         }
 
         public DecisionState GetNextDecision()

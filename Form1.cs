@@ -58,6 +58,7 @@ namespace SolvePseudoku
                     AddNodeToTreeView(path, IntArrayToString(solution), 0, true);
                     decisions.FinalizeBranch(solution, solver.CellPossibleNums);
                     SubmitSolution(solution, path);
+                    Stats.Instance.solutions++;
                     break;
                 case -2:    //It's a regular state
                     int cellIdx;
@@ -132,7 +133,20 @@ namespace SolvePseudoku
                     }
                 }
             CurrentStateLabel.Text = path;
-            CycleLabel.Text = "Cycles: " + solver.CycleCount + "/" + solver.SubCycleCount;
+            UpdateStats();
+        }
+
+        void UpdateStats()
+        {
+            Stats.Instance.aliveNodes = LeafViewAliveListBox.Items.Count;
+            Stats.Instance.deadNodes = LeafViewDeadListBox.Items.Count;
+            statCyclesLabel.Text = Stats.Instance.cycles.ToString();
+            StatSubcyclesLabel.Text = Stats.Instance.subCycles.ToString();
+            statAliveLeavesLabel.Text = Stats.Instance.aliveNodes.ToString();
+            statDeadLeavesLabel.Text = Stats.Instance.deadNodes.ToString();
+            statAllDecisionsLabel.Text = Stats.Instance.allDecisionStates.ToString();
+            statDecisionQueueSizeLabel.Text = Stats.Instance.queueSize.ToString();
+            statAvgFindsPerSubcycleLabel.Text = Stats.Instance.avgFindPerSubcycle.ToString();
         }
 
         void SubmitSolution(int[] solution, string path)
@@ -188,15 +202,15 @@ namespace SolvePseudoku
         {
             int cycles = (int)CycleNumSelect.Value;
             string path = "";
-            while(runSolveCycleButton.Enabled && cycles > 1)
+            while (runSolveCycleButton.Enabled && cycles > 1)
             {
-                if(SolveCycle(out path) == null)
+                if (SolveCycle(out path) == null)
                 {
                     UpdateView(null, path);
                     return;
                 }
+                UpdateStats();
                 cycles--;
-                CycleLabel.Text = "Cycles: " + solver.CycleCount + "/" + solver.SubCycleCount;
             }
             int[] solution = SolveCycle(out path);
             UpdateView(solution, path);
@@ -206,7 +220,6 @@ namespace SolvePseudoku
         {
             string path = "";
             int[] solution = SolveCycle(out path);
-            CycleLabel.Text = "Cycles: " + solver.CycleCount + "/" + solver.SubCycleCount;
             UpdateView(solution, path);
         }
 
@@ -236,6 +249,7 @@ namespace SolvePseudoku
                 pictureBox1.Image = Properties.Resources.ResourceManager.GetObject("BG_" + (overlayComboBox.SelectedIndex - 1)) as Image;
             }
         }
+
 
         public static String IntArrayToString(int[] arr)
         {
