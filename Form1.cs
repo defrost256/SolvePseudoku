@@ -79,7 +79,10 @@ namespace SolvePseudoku
             UpdateView(solution, path);
             DecisionState newDecision;
             if ((newDecision = decisions.GetNextDecision()) == null)
+            {
                 runSolveCycleButton.Enabled = false;
+                return null;
+            }
             else
             {
                 solver.LoadState(newDecision.cells, newDecision.possibleNums);
@@ -99,7 +102,10 @@ namespace SolvePseudoku
             if (currentNode.Parent != null && LeafViewAliveListBox.Items.Count > 0 && currentNode.Parent.Text == LeafViewAliveListBox.Items[0].ToString())
                 LeafViewAliveListBox.Items.RemoveAt(0);
             if (isSolution)
+            {
                 currentNode.NodeFont = knownFont;
+                LeafViewAliveListBox.Items.RemoveAt(0);
+            }
             if (errorCode != 0)
             {
                 currentNode.NodeFont = errorFont;
@@ -111,20 +117,22 @@ namespace SolvePseudoku
 
         void UpdateView(int[] newCells, string path)
         {
-            for(int i = 0; i < 40; i++)
-            {
-                if (newCells[i] != -1)
+            if(newCells != null)
+                for(int i = 0; i < 40; i++)
                 {
-                    labels[i].Text = newCells[i].ToString();
-                    labels[i].Font = knownFont;
+                    if (newCells[i] != -1)
+                    {
+                        labels[i].Text = newCells[i].ToString();
+                        labels[i].Font = knownFont;
+                    }
+                    else
+                    {
+                        labels[i].Text = "";
+                        labels[i].Font = unknownFont;
+                    }
                 }
-                else
-                {
-                    labels[i].Text = "";
-                    labels[i].Font = unknownFont;
-                }
-            }
             CurrentStateLabel.Text = path;
+            CycleLabel.Text = "Cycles: " + solver.CycleCount + "/" + solver.SubCycleCount;
         }
 
         void SubmitSolution(int[] solution, string path)
@@ -182,8 +190,13 @@ namespace SolvePseudoku
             string path = "";
             while(runSolveCycleButton.Enabled && cycles > 1)
             {
-                SolveCycle(out path);
+                if(SolveCycle(out path) == null)
+                {
+                    UpdateView(null, path);
+                    return;
+                }
                 cycles--;
+                CycleLabel.Text = "Cycles: " + solver.CycleCount + "/" + solver.SubCycleCount;
             }
             int[] solution = SolveCycle(out path);
             UpdateView(solution, path);
@@ -193,6 +206,7 @@ namespace SolvePseudoku
         {
             string path = "";
             int[] solution = SolveCycle(out path);
+            CycleLabel.Text = "Cycles: " + solver.CycleCount + "/" + solver.SubCycleCount;
             UpdateView(solution, path);
         }
 
@@ -211,6 +225,16 @@ namespace SolvePseudoku
         {
             if(LeafViewDeadListBox.SelectedItem != null)
                 SelectInListBox(LeafViewDeadListBox.SelectedItem.ToString());
+        }
+
+        private void overlayComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (overlayComboBox.SelectedIndex == 0)
+                pictureBox1.Image = Properties.Resources.Board;
+            else
+            {
+                pictureBox1.Image = Properties.Resources.ResourceManager.GetObject("BG_" + (overlayComboBox.SelectedIndex - 1)) as Image;
+            }
         }
 
         public static String IntArrayToString(int[] arr)

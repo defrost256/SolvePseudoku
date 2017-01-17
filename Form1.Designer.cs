@@ -33,7 +33,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.SolutionsTab = new System.Windows.Forms.TabPage();
             this.SolutionListBox = new System.Windows.Forms.ListBox();
-            this.ControlsTabPage = new System.Windows.Forms.TabPage();
+            this.StatsTabPage = new System.Windows.Forms.TabPage();
             this.CurrentStateLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -93,6 +93,11 @@
             this.CycleNumSelect = new System.Windows.Forms.NumericUpDown();
             this.panel4 = new System.Windows.Forms.Panel();
             this.DecisionStateLabel = new System.Windows.Forms.Label();
+            this.CycleLabel = new System.Windows.Forms.Label();
+            this.ControlsTabPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.OverlayControlLabel = new System.Windows.Forms.Label();
+            this.overlayComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SolutionsTab.SuspendLayout();
@@ -106,6 +111,8 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CycleNumSelect)).BeginInit();
             this.panel4.SuspendLayout();
+            this.ControlsTabPage.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -162,6 +169,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.SolutionsTab);
+            this.tabControl1.Controls.Add(this.StatsTabPage);
             this.tabControl1.Controls.Add(this.ControlsTabPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 510);
@@ -191,15 +199,15 @@
             this.SolutionListBox.TabIndex = 0;
             this.SolutionListBox.SelectedIndexChanged += new System.EventHandler(this.SolutionListBox_SelectedIndexChanged);
             // 
-            // ControlsTabPage
+            // StatsTabPage
             // 
-            this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.ControlsTabPage.Name = "ControlsTabPage";
-            this.ControlsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ControlsTabPage.Size = new System.Drawing.Size(473, 155);
-            this.ControlsTabPage.TabIndex = 1;
-            this.ControlsTabPage.Text = "Controls";
-            this.ControlsTabPage.UseVisualStyleBackColor = true;
+            this.StatsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.StatsTabPage.Name = "StatsTabPage";
+            this.StatsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.StatsTabPage.Size = new System.Drawing.Size(473, 155);
+            this.StatsTabPage.TabIndex = 1;
+            this.StatsTabPage.Text = "Stats";
+            this.StatsTabPage.UseVisualStyleBackColor = true;
             // 
             // CurrentStateLabel
             // 
@@ -612,7 +620,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::SolvePseudoku.Properties.Resources.Board;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
@@ -639,7 +647,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(481, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(427, 691);
+            this.panel2.Size = new System.Drawing.Size(682, 691);
             this.panel2.TabIndex = 2;
             // 
             // panel5
@@ -648,7 +656,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 29);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(427, 640);
+            this.panel5.Size = new System.Drawing.Size(682, 640);
             this.panel5.TabIndex = 6;
             // 
             // tabControl2
@@ -660,7 +668,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(427, 640);
+            this.tabControl2.Size = new System.Drawing.Size(682, 640);
             this.tabControl2.TabIndex = 0;
             // 
             // treeViewTabPage
@@ -669,7 +677,7 @@
             this.treeViewTabPage.Location = new System.Drawing.Point(4, 22);
             this.treeViewTabPage.Name = "treeViewTabPage";
             this.treeViewTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.treeViewTabPage.Size = new System.Drawing.Size(419, 614);
+            this.treeViewTabPage.Size = new System.Drawing.Size(674, 614);
             this.treeViewTabPage.TabIndex = 0;
             this.treeViewTabPage.Text = "Tree View";
             this.treeViewTabPage.UseVisualStyleBackColor = true;
@@ -679,7 +687,7 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(413, 608);
+            this.treeView1.Size = new System.Drawing.Size(668, 608);
             this.treeView1.TabIndex = 3;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -732,10 +740,11 @@
             this.flowLayoutPanel1.Controls.Add(this.CollepseAllButton);
             this.flowLayoutPanel1.Controls.Add(this.SolveAllButton);
             this.flowLayoutPanel1.Controls.Add(this.CycleNumSelect);
+            this.flowLayoutPanel1.Controls.Add(this.CycleLabel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(427, 29);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(682, 29);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // ExpandAllButton
@@ -786,7 +795,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 669);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(427, 22);
+            this.panel4.Size = new System.Drawing.Size(682, 22);
             this.panel4.TabIndex = 5;
             // 
             // DecisionStateLabel
@@ -799,11 +808,81 @@
             this.DecisionStateLabel.TabIndex = 4;
             this.DecisionStateLabel.Text = " ";
             // 
+            // CycleLabel
+            // 
+            this.CycleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CycleLabel.AutoSize = true;
+            this.CycleLabel.Location = new System.Drawing.Point(388, 8);
+            this.CycleLabel.Name = "CycleLabel";
+            this.CycleLabel.Size = new System.Drawing.Size(61, 13);
+            this.CycleLabel.TabIndex = 6;
+            this.CycleLabel.Text = "Cycles: 0/0";
+            // 
+            // ControlsTabPage
+            // 
+            this.ControlsTabPage.Controls.Add(this.tableLayoutPanel1);
+            this.ControlsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ControlsTabPage.Name = "ControlsTabPage";
+            this.ControlsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ControlsTabPage.Size = new System.Drawing.Size(473, 155);
+            this.ControlsTabPage.TabIndex = 2;
+            this.ControlsTabPage.Text = "Controls";
+            this.ControlsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.0621F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.9379F));
+            this.tableLayoutPanel1.Controls.Add(this.OverlayControlLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.overlayComboBox, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(467, 149);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // OverlayControlLabel
+            // 
+            this.OverlayControlLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.OverlayControlLabel.AutoSize = true;
+            this.OverlayControlLabel.Location = new System.Drawing.Point(3, 6);
+            this.OverlayControlLabel.Name = "OverlayControlLabel";
+            this.OverlayControlLabel.Size = new System.Drawing.Size(43, 13);
+            this.OverlayControlLabel.TabIndex = 0;
+            this.OverlayControlLabel.Text = "Overlay";
+            // 
+            // overlayComboBox
+            // 
+            this.overlayComboBox.FormattingEnabled = true;
+            this.overlayComboBox.Items.AddRange(new object[] {
+            "None",
+            "Left",
+            "Right",
+            "Top",
+            "Bottom",
+            "Top-Bottom Horizontal",
+            "Top-Bottom Horizontal Inv.",
+            "Bottom-Top Horizontal",
+            "Bottom-Top Horizontal Inv.",
+            "Left-Right Vertical",
+            "Left-Right Vertical Inv.",
+            "Right-Left Vertical",
+            "Right-Left Vertical Inv."});
+            this.overlayComboBox.Location = new System.Drawing.Point(64, 3);
+            this.overlayComboBox.Name = "overlayComboBox";
+            this.overlayComboBox.Size = new System.Drawing.Size(201, 21);
+            this.overlayComboBox.TabIndex = 1;
+            this.overlayComboBox.SelectedIndexChanged += new System.EventHandler(this.overlayComboBox_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 691);
+            this.ClientSize = new System.Drawing.Size(1163, 691);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -820,9 +899,13 @@
             this.LeafViewAliveTabPage.ResumeLayout(false);
             this.LeafViewDeadTabPage.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CycleNumSelect)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.ControlsTabPage.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -886,13 +969,18 @@
         private System.Windows.Forms.ListBox SolutionListBox;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage SolutionsTab;
-        private System.Windows.Forms.TabPage ControlsTabPage;
+        private System.Windows.Forms.TabPage StatsTabPage;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage treeViewTabPage;
         private System.Windows.Forms.TabPage LeafViewAliveTabPage;
         private System.Windows.Forms.ListBox LeafViewAliveListBox;
         private System.Windows.Forms.TabPage LeafViewDeadTabPage;
         private System.Windows.Forms.ListBox LeafViewDeadListBox;
+        private System.Windows.Forms.Label CycleLabel;
+        private System.Windows.Forms.TabPage ControlsTabPage;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label OverlayControlLabel;
+        private System.Windows.Forms.ComboBox overlayComboBox;
     }
 }
 

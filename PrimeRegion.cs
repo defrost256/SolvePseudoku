@@ -85,7 +85,7 @@ namespace SolvePseudoku
             else if(ones != -1)
             {
                 if (cells[0].UpdatePossible(OnesToTens[ones]) <= 0)
-                    return 4;
+                    return 5;
             }
             return 0;
         }

@@ -50,8 +50,13 @@ namespace SolvePseudoku
             int i;
             foreach(Cell c in cells)
             {
-                if (c.HasNum && (i = possible.FindIndex(n => n == c.num)) == -1)
-                    return false;
+                if (c.HasNum)
+                {
+                    i = possible.FindIndex(n => n == c.num);
+                    if (i == -1)
+                        return false;
+                    possible.RemoveAt(i);
+                }
             }
             return true;
         }

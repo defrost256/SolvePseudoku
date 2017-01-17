@@ -36,6 +36,12 @@ namespace SolvePseudoku
         /// </summary>
         int timeOutCycles;
 
+        int cycleCount = 0;
+        public int CycleCount { get { return cycleCount; } }
+
+        int subCycleCount = 0;
+        public int SubCycleCount { get { return subCycleCount; } }
+
         /// <summary>
         /// Returns an array containing the values of the cells in order of their indices
         /// </summary>
@@ -81,7 +87,7 @@ namespace SolvePseudoku
 
             for(int i = 0; i < 40; i++)
             {
-                cells.Add(new Cell(primeOneCellIdx.Contains(i)));
+                cells.Add(new Cell(primeOneCellIdx.Contains(i), i));
             }
 
             //TODO: Read from file
@@ -137,15 +143,17 @@ namespace SolvePseudoku
             int finds;
             int cycles = 0;
             int errCode;
+            cycleCount++;
             foreach(Region r in regions)
             {
                 if (!r.CheckDiscrepancies())
-                    return 5;
+                    return 6;
             }
             do
             {
                 while ((finds = CheckCellsForCertainPicks()) == 0 && cycles < timeOutCycles)
                 {
+                    subCycleCount++;
                     foreach (Region r in regions)
                         if ((errCode = r.CalculatePossibleNumbers()) != 0)
                             return errCode;
@@ -154,7 +162,12 @@ namespace SolvePseudoku
                 //finishedEvent();
             } while (finds > 0);
             if (unknownCells.Count == 0)
+            {
+                foreach (Region r in regions)
+                    if (!r.CheckDiscrepancies())
+                        return 6;
                 return -1;
+            }
             return -2;
         }
 

@@ -72,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
@@ -86,6 +87,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Board.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BG_11.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

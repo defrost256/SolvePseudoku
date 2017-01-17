@@ -13,13 +13,15 @@ namespace SolvePseudoku
     {
         public static readonly int[] PotentialNums = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         public static readonly int[] PotentialPrimes = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 };
-        public static readonly int[] PotentialOnes = { 2, 3, 5, 7, 9 };
+        public static readonly int[] PotentialOnes = { 1, 2, 3, 5, 7, 9 };
 
         /// <summary>
         /// The value of the cell
         /// -1 if no value is set yet
         /// </summary>
         public int num = -1;
+
+        public int idx;
 
         /// <summary>
         /// The regions this cell is part of
@@ -59,8 +61,9 @@ namespace SolvePseudoku
         /// Otherwise all numbers between 0 and 9 (all inclusive)
         /// </summary>
         /// <param name="ones">Indicates whether the cell is a prime one</param>
-        public Cell(bool ones)
+        public Cell(bool ones, int idx)
         {
+            this.idx = idx;
             if (ones)
                 possibleNums = new List<int>(PotentialOnes);
             else
